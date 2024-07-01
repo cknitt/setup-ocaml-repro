@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Setup OCaml
+        uses: ocaml/setup-ocaml@v3.0.0-beta
+        with:
+          ocaml-compiler: 5.2.0
+          allow-prerelease-opam: true
+          opam-pin: false
+
+      - name: Execute bash script
+        shell: bash
+        run: |
+          if git diff --name-only --exit-code HEAD^ HEAD -- jscomp/syntax; then
+            echo "syntax_status=unchanged" >> $GITHUB_ENV
+          else
+            echo "syntax_status=changed" >> $GITHUB_ENV
+          fi
