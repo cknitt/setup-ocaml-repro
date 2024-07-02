@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Setup OCaml
-        uses: ocaml/setup-ocaml@v3.0.0-beta
+        uses: ocaml/setup-ocaml@v3.0.0
         with:
           ocaml-compiler: 5.2.0
           allow-prerelease-opam: true
