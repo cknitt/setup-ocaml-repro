@@ -18,6 +18,10 @@ jobs:
 
       - name: Execute bash script
         shell: bash
+        run: which opam
+
+      - name: Execute bash script
+        shell: bash
         env:
           SHELLOPTS: igncr
         run: |
